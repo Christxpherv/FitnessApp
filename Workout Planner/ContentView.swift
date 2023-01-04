@@ -10,20 +10,44 @@ struct ContentView: View {
                     .foregroundColor(.accentColor)
                 Text("Hello, world!")
             }
-            .padding()
             .tabItem {
-                Image(systemName: "1.circle")
+                Image(uiImage: UIImage(named: "home-home_symbol")!)
                 Text("Home")
+            }
+            Text("Exercises")
+                .tabItem {
+                    Image(uiImage: UIImage(named:"self_improvement")!)
+                    Text("Exercises")
+                }
+            Text("Progress")
+                .tabItem {
+                    Image(systemName: "chart.bar")
+                    Text("Progress")
+                }
+            VStack {
+                HStack {
+                    Button(action: {
+                    }) {
+                        Text("Following")
+                    }
+                    Button(action: {
+                    }) {
+                        Text("For You")
+                    }
+                    Button(action: {
+                    }) {
+                        Text("Trending")
+                    }
+                }
+            }
+            .tabItem {
+                Image(systemName: "magnifyingglass")
+                Text("Explore")
             }
             ProfileView()
                 .tabItem {
                     Image(systemName: "person.fill")
                     Text("Profile")
-                }
-            Text("Explore")
-                .tabItem {
-                    Image(systemName: "magnifyingglass")
-                    Text("Explore")
                 }
         }
     }
@@ -31,10 +55,13 @@ struct ContentView: View {
 
 struct ProfileView: View {
     var body: some View {
-        Text("This is the profile view")
+        List {
+            Text("Option 1")
+            Text("Option 2")
+            Text("Option 3")
+        }
     }
 }
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
