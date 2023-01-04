@@ -24,21 +24,26 @@ struct ContentView: View {
                     Image(systemName: "chart.bar")
                     Text("Progress")
                 }
-            VStack {
-                HStack {
-                    Button(action: {
-                    }) {
-                        Text("Following")
-                    }
-                    Button(action: {
-                    }) {
-                        Text("For You")
-                    }
-                    Button(action: {
-                    }) {
-                        Text("Trending")
-                    }
+            NavigationView {
+                TabView {
+                    FollowingView()
+                        .tabItem {
+                            Text("Following")
+                        }
+                        .navigationTitle("Following")
+                    ForYouView()
+                        .tabItem {
+                            Text("For You")
+                        }
+                        .navigationTitle("For You")
+                    TrendingView()
+                        .tabItem {
+                            Text("Trending")
+                        }
+                        .navigationTitle("Trending")
                 }
+                .tabViewStyle(PageTabViewStyle())
+                .navigationBarTitle(Text("Explore"), displayMode: .inline)
             }
             .tabItem {
                 Image(systemName: "magnifyingglass")
@@ -53,6 +58,24 @@ struct ContentView: View {
     }
 }
 
+struct FollowingView: View {
+    var body: some View {
+        Text("Following")
+    }
+}
+
+struct ForYouView: View {
+    var body: some View {
+        Text("For You")
+    }
+}
+
+struct TrendingView: View {
+    var body: some View {
+        Text("Trending")
+    }
+}
+
 struct ProfileView: View {
     var body: some View {
         List {
@@ -62,8 +85,18 @@ struct ProfileView: View {
         }
     }
 }
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+
+
+/*
+ body parts:
+ arms
+ legs
+ back
+ core
+ */
