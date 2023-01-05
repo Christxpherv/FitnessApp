@@ -5,10 +5,7 @@ struct ContentView: View {
     var body: some View {
         TabView {
             VStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundColor(.accentColor)
-                Text("Hello, world!")
+                ImageGrid()
             }
             .tabItem {
                 Image(uiImage: UIImage(named: "home-home_symbol")!)
@@ -58,6 +55,51 @@ struct ContentView: View {
     }
 }
 
+struct ImageGrid: View {
+    let images: [Image] = [
+        Image("blackplaceholder"),
+        Image("blackplaceholder"),
+        Image("blackplaceholder"),
+        Image("blackplaceholder"),
+        Image("blackplaceholder"),
+        Image("blackplaceholder"),
+        Image("blackplaceholder"),
+        Image("blackplaceholder"),
+    ]
+
+    var body: some View {
+        NavigationView {
+            GeometryReader { geometry in
+                VStack(alignment: .leading) {
+                    ForEach(0..<4) { row in
+                        HStack(alignment: .top, spacing: 10) {
+                            ForEach(0..<2) { col in
+                                NavigationLink(destination: DetailView()) {
+                                    self.images[(row * 2) + col]
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .fixedSize()
+                                        .frame(width: (geometry.size.width - 20) / 2, height: geometry.size.height / 4.3)
+                                        .clipped()
+                                        .cornerRadius(20)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .padding(.leading, 8.5)
+        }
+    }
+}
+
+
+struct DetailView: View {
+    var body: some View {
+        Text("This is the detail view")
+    }
+}
+
 struct FollowingView: View {
     var body: some View {
         Text("Following")
@@ -76,6 +118,8 @@ struct TrendingView: View {
     }
 }
 
+
+
 struct ProfileView: View {
     var body: some View {
         List {
@@ -93,10 +137,15 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 
+
 /*
  body parts:
- arms
+ chest
+ triceps
  legs
+ calves
  back
- core
+ biceps
+ shoulders
+ abs (core)
  */
