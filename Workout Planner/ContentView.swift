@@ -56,16 +56,7 @@ struct ContentView: View {
 }
 
 struct ImageGrid: View {
-    let images: [Image] = [
-        Image("blackplaceholder"),
-        Image("blackplaceholder"),
-        Image("blackplaceholder"),
-        Image("blackplaceholder"),
-        Image("blackplaceholder"),
-        Image("blackplaceholder"),
-        Image("blackplaceholder"),
-        Image("blackplaceholder"),
-    ]
+    let images = [        Image("blackplaceholder"),        Image("blackplaceholder"),     Image("blackplaceholder"),        Image("blackplaceholder"),        Image("blackplaceholder"),        Image("blackplaceholder"),        Image("blackplaceholder"),   Image("blackplaceholder")    ]
 
     var body: some View {
         NavigationView {
@@ -74,14 +65,23 @@ struct ImageGrid: View {
                     ForEach(0..<4) { row in
                         HStack(alignment: .top, spacing: 10) {
                             ForEach(0..<2) { col in
-                                NavigationLink(destination: DetailView()) {
-                                    self.images[(row * 2) + col]
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .fixedSize()
-                                        .frame(width: (geometry.size.width - 20) / 2, height: geometry.size.height / 4.3)
-                                        .clipped()
-                                        .cornerRadius(20)
+                                NavigationLink(destination: DetailView(section: "Section \(row * 2 + col + 1)")) {
+                                    ZStack(alignment: .bottom) {
+                                        images[row * 2 + col]
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: (geometry.size.width - 20) / 2, height: geometry.size.height / 4.3)
+                                            .clipped()
+                                            .cornerRadius(20)
+
+                                        Text("Label")
+                                            .foregroundColor(.white)
+                                            .font(.caption)
+                                            .padding(4)
+                                            .background(Color.black.opacity(0.5))
+                                            .cornerRadius(4)
+                                            .offset(x: 0, y: -4)
+                                    }
                                 }
                             }
                         }
@@ -93,10 +93,11 @@ struct ImageGrid: View {
     }
 }
 
-
 struct DetailView: View {
+    var section: String
+
     var body: some View {
-        Text("This is the detail view")
+        Text("This is the detail view for section: \(section)")
     }
 }
 
