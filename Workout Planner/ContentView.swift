@@ -56,7 +56,8 @@ struct ContentView: View {
 }
 
 struct ImageGrid: View {
-    let images = [        Image("blackplaceholder"),        Image("blackplaceholder"),     Image("blackplaceholder"),        Image("blackplaceholder"),        Image("blackplaceholder"),        Image("blackplaceholder"),        Image("blackplaceholder"),   Image("blackplaceholder")    ]
+    let images = [
+        Image("blackplaceholder"),        Image("blackplaceholder"),     Image("blackplaceholder"),        Image("blackplaceholder"),        Image("blackplaceholder"),        Image("blackplaceholder"),        Image("blackplaceholder"),   Image("blackplaceholder")    ]
 
     var body: some View {
         NavigationView {
@@ -97,7 +98,25 @@ struct DetailView: View {
     var section: String
 
     var body: some View {
-        Text("This is the detail view for section: \(section)")
+        Group {
+            if section == "Section 1" {
+                Text("section one")
+            } else if section == "Section 2" {
+                Text("section two")
+            } else if section == "Section 3" {
+                Text("section three")
+            } else if section == "Section 4" {
+                Text("section four")
+            } else if section == "Section 5" {
+                Text("section five")
+            } else if section == "Section 6" {
+                Text("section six")
+            } else if section == "Section 7" {
+                Text("section seven")
+            } else if section == "Section 8" {
+                Text("section eight")
+            }
+        }
     }
 }
 
