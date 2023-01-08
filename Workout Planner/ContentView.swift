@@ -1,5 +1,4 @@
 import SwiftUI
-import SceneKit
 
 struct ContentView: View {
     var body: some View {
@@ -96,25 +95,220 @@ struct ImageGrid: View {
 
 struct DetailView: View {
     var section: String
-
+    
     var body: some View {
         Group {
-            if section == "Section 1" {
-                Text("section one")
-            } else if section == "Section 2" {
-                Text("section two")
-            } else if section == "Section 3" {
-                Text("section three")
-            } else if section == "Section 4" {
-                Text("section four")
-            } else if section == "Section 5" {
-                Text("section five")
-            } else if section == "Section 6" {
-                Text("section six")
-            } else if section == "Section 7" {
-                Text("section seven")
-            } else if section == "Section 8" {
-                Text("section eight")
+            switch section {
+            case "Section 1":
+                ScrollView(.vertical, showsIndicators: true) {
+                    HStack {
+                        VStack {
+                            ForEach(0..<4) { _ in
+                                Image("blackplaceholder")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 200, height: 200)
+                                    .clipped()
+                                    .cornerRadius(20)
+                            }
+                        }
+                        VStack {
+                            ForEach(0..<4) { _ in
+                                Image("blackplaceholder")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 200, height: 200)
+                                    .clipped()
+                                    .cornerRadius(20)
+                            }
+                        }
+                    }
+                }
+                Spacer()
+            case "Section 2":
+                ScrollView(.vertical, showsIndicators: true) {
+                    HStack {
+                        VStack {
+                            ForEach(0..<4) { _ in
+                                Image("blackplaceholder")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 200, height: 200)
+                                    .clipped()
+                                    .cornerRadius(20)
+                            }
+                        }
+                        VStack {
+                            ForEach(0..<4) { _ in
+                                Image("blackplaceholder")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 200, height: 200)
+                                    .clipped()
+                                    .cornerRadius(20)
+                            }
+                        }
+                    }
+                }
+                Spacer()
+            case "Section 3":
+                ScrollView(.vertical, showsIndicators: true) {
+                    HStack {
+                        VStack {
+                            ForEach(0..<4) { _ in
+                                Image("blackplaceholder")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 200, height: 200)
+                                    .clipped()
+                                    .cornerRadius(20)
+                            }
+                        }
+                        VStack {
+                            ForEach(0..<4) { _ in
+                                Image("blackplaceholder")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 200, height: 200)
+                                    .clipped()
+                                    .cornerRadius(20)
+                            }
+                        }
+                    }
+                }
+                Spacer()
+            case "Section 4":
+                ScrollView(.vertical, showsIndicators: true) {
+                    HStack {
+                        VStack {
+                            ForEach(0..<4) { _ in
+                                Image("blackplaceholder")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 200, height: 200)
+                                    .clipped()
+                                    .cornerRadius(20)
+                            }
+                        }
+                        VStack {
+                            ForEach(0..<4) { _ in
+                                Image("blackplaceholder")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 200, height: 200)
+                                    .clipped()
+                                    .cornerRadius(20)
+                            }
+                        }
+                    }
+                }
+                Spacer()
+            case "Section 5":
+                ScrollView(.vertical, showsIndicators: true) {
+                    HStack {
+                        VStack {
+                            ForEach(0..<4) { _ in
+                                Image("blackplaceholder")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 200, height: 200)
+                                    .clipped()
+                                    .cornerRadius(20)
+                            }
+                        }
+                        VStack {
+                            ForEach(0..<4) { _ in
+                                Image("blackplaceholder")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 200, height: 200)
+                                    .clipped()
+                                    .cornerRadius(20)
+                            }
+                        }
+                    }
+                }
+                Spacer()
+            case "Section 6":
+                ScrollView(.vertical, showsIndicators: true) {
+                    HStack {
+                        VStack {
+                            ForEach(0..<4) { _ in
+                                Image("blackplaceholder")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 200, height: 200)
+                                    .clipped()
+                                    .cornerRadius(20)
+                            }
+                        }
+                        VStack {
+                            ForEach(0..<4) { _ in
+                                Image("blackplaceholder")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 200, height: 200)
+                                    .clipped()
+                                    .cornerRadius(20)
+                            }
+                        }
+                    }
+                }
+                Spacer()
+            case "Section 7":
+                ScrollView(.vertical, showsIndicators: true) {
+                    HStack {
+                        VStack {
+                            ForEach(0..<4) { _ in
+                                Image("blackplaceholder")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 200, height: 200)
+                                    .clipped()
+                                    .cornerRadius(20)
+                            }
+                        }
+                        VStack {
+                            ForEach(0..<4) { _ in
+                                Image("blackplaceholder")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 200, height: 200)
+                                    .clipped()
+                                    .cornerRadius(20)
+                            }
+                        }
+                    }
+                }
+                Spacer()
+            case "Section 8":
+                ScrollView(.vertical, showsIndicators: true) {
+                    HStack {
+                        VStack {
+                            ForEach(0..<4) { _ in
+                                Image("blackplaceholder")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 200, height: 200)
+                                    .clipped()
+                                    .cornerRadius(20)
+                            }
+                        }
+                        VStack {
+                            ForEach(0..<4) { _ in
+                                Image("blackplaceholder")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 200, height: 200)
+                                    .clipped()
+                                    .cornerRadius(20)
+                            }
+                        }
+                    }
+                }
+                Spacer()
+            default:
+                Text("Invalid section")
             }
         }
     }

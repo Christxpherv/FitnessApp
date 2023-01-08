@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DB5D92C729650DAA00DBE7B7 /* tmp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5D92C629650DAA00DBE7B7 /* tmp.swift */; };
 		DB861FDD295FCFEF006ACBD0 /* Workout_PlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB861FDC295FCFEF006ACBD0 /* Workout_PlannerApp.swift */; };
 		DB861FDF295FCFEF006ACBD0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB861FDE295FCFEF006ACBD0 /* ContentView.swift */; };
 		DB861FE1295FCFF0006ACBD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB861FE0295FCFF0006ACBD0 /* Assets.xcassets */; };
@@ -15,7 +14,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DB5D92C629650DAA00DBE7B7 /* tmp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tmp.swift; sourceTree = "<group>"; };
 		DB861FD9295FCFEF006ACBD0 /* Workout Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Workout Planner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB861FDC295FCFEF006ACBD0 /* Workout_PlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout_PlannerApp.swift; sourceTree = "<group>"; };
 		DB861FDE295FCFEF006ACBD0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -37,7 +35,6 @@
 		DB861FD0295FCFEF006ACBD0 = {
 			isa = PBXGroup;
 			children = (
-				DB5D92C629650DAA00DBE7B7 /* tmp.swift */,
 				DB861FDB295FCFEF006ACBD0 /* Workout Planner */,
 				DB861FDA295FCFEF006ACBD0 /* Products */,
 			);
@@ -143,7 +140,6 @@
 			files = (
 				DB861FDF295FCFEF006ACBD0 /* ContentView.swift in Sources */,
 				DB861FDD295FCFEF006ACBD0 /* Workout_PlannerApp.swift in Sources */,
-				DB5D92C729650DAA00DBE7B7 /* tmp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
