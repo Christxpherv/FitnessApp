@@ -106,7 +106,7 @@ struct DetailView: View {
     let bicepExercise: [String] = ["workout one", "workout two", "workout three", "workout four", "workout five", "workout six", "workout seven","workout eight"]
     
     let triceps: [String] = ["black", "orange", "black", "orange", "black", "orange", "black", "orange"]
-    let tricepExercise: [String] = ["workout one", "workout two", "workout three", "workout four", "workout five", "workout six", "workout seven","workout eight"]
+    let tricepExercise: [String] = ["one", "workout two", "workout three", "workout four", "workout five", "workout six", "workout seven","workout eight"]
     
     let shoulders: [String] = ["black", "orange", "black", "orange", "black", "orange", "black", "orange"]
     let shoulderExercise: [String] = ["workout one", "workout two", "workout three", "workout four", "workout five", "workout six", "workout seven","workout eight"]
@@ -134,9 +134,7 @@ struct DetailView: View {
                 Color.gray
                     .ignoresSafeArea()
                 
-                NavigationLink(destination: workout()) {
-                    loop(bodyPart: biceps, exercises: bicepExercise, columns: columns)
-                }
+                    information(bodyPart: biceps, exercises: bicepExercise, columns: columns)
             }
             Spacer()
         case "triceps":
@@ -145,9 +143,7 @@ struct DetailView: View {
                 Color.gray
                     .ignoresSafeArea()
                 
-                NavigationLink(destination: workout()) {
-                    loop(bodyPart: triceps, exercises: tricepExercise, columns: columns)
-                }
+                    information(bodyPart: triceps, exercises: tricepExercise, columns: columns)
             }
             Spacer()
         case "shoulders":
@@ -156,9 +152,7 @@ struct DetailView: View {
                 Color.gray
                     .ignoresSafeArea()
                 
-                NavigationLink(destination: workout()) {
-                    loop(bodyPart: shoulders, exercises: shoulderExercise, columns: columns)
-                }
+                    information(bodyPart: shoulders, exercises: shoulderExercise, columns: columns)
             }
             Spacer()
         case "chest":
@@ -167,9 +161,7 @@ struct DetailView: View {
                 Color.gray
                     .ignoresSafeArea()
                 
-                NavigationLink(destination: workout()) {
-                    loop(bodyPart: chest, exercises: chestExercise, columns: columns)
-                }
+                    information(bodyPart: chest, exercises: chestExercise, columns: columns)
             }
             Spacer()
         case "core":
@@ -178,9 +170,7 @@ struct DetailView: View {
                 Color.gray
                     .ignoresSafeArea()
                 
-                NavigationLink(destination: workout()) {
-                    loop(bodyPart: core, exercises: coreExercise, columns: columns)
-                }
+                    information(bodyPart: core, exercises: coreExercise, columns: columns)
             }
             Spacer()
         case "back":
@@ -189,9 +179,7 @@ struct DetailView: View {
                 Color.gray
                     .ignoresSafeArea()
                 
-                NavigationLink(destination: workout()) {
-                    loop(bodyPart: back, exercises: backExercise, columns: columns)
-                }
+                    information(bodyPart: back, exercises: backExercise, columns: columns)
             }
             Spacer()
         case "legs":
@@ -200,9 +188,7 @@ struct DetailView: View {
                 Color.gray
                     .ignoresSafeArea()
                 
-                NavigationLink(destination: workout()) {
-                    loop(bodyPart: legs, exercises: legsExercise, columns: columns)
-                }
+                    information(bodyPart: legs, exercises: legsExercise, columns: columns)
             }
             Spacer()
         case "calves":
@@ -210,10 +196,8 @@ struct DetailView: View {
                 
                 Color.gray
                     .ignoresSafeArea()
-                
-                NavigationLink(destination: workout()) {
-                    loop(bodyPart: calves, exercises: calvesExercise, columns: columns)
-                }
+
+                    information(bodyPart: calves, exercises: calvesExercise, columns: columns)
             }
             Spacer()
         default:
@@ -222,26 +206,36 @@ struct DetailView: View {
     }
 }
 
-func loop(bodyPart: [String], exercises: [String], columns: [GridItem]) -> some View {
+func information(bodyPart: [String], exercises: [String], columns: [GridItem]) -> some View {
     ScrollView {
         LazyVGrid(columns: columns) {
             ForEach(bodyPart.indices, id: \.self) { index in
-                Image(bodyPart[index])
-                    .resizable(capInsets: .init(), resizingMode: .stretch)
-                    .frame(width: 185, height: 170)
-                    .cornerRadius(20)
-                    .overlay(
-                        Text(exercises[index])
-                            .frame(width: 185, height: 160, alignment: .bottom)
-                            .foregroundColor(.white))
+                NavigationLink(destination: Workout(exercise: exercises[index])) {
+                    Image(bodyPart[index])
+                        .resizable(capInsets: .init(), resizingMode: .stretch)
+                        .frame(width: 185, height: 170)
+                        .cornerRadius(20)
+                        .overlay(
+                            Text(exercises[index])
+                                .frame(width: 185, height: 160, alignment: .bottom)
+                                .foregroundColor(.white))
+                }
             }
         }
     }
 }
 
-struct workout: View {
+struct Workout: View {
+    
+    let exercise: String
+    
     var body: some View {
-        Text("workout page")
+        switch exercise {
+        case "workout one":
+            Text("information goes here")
+        default:
+            Text("invalid")
+        }
     }
 }
 
