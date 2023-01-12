@@ -79,7 +79,7 @@ struct ImageGrid: View {
                             NavigationLink(destination: DetailView(selectedPart: part[index])) {
                                 Image(image[index])
                                     .resizable(capInsets: .init(), resizingMode: .stretch)
-                                    .frame(width: 185, height: 170)
+                                    .frame(width: 185, height: 185)
                                     .cornerRadius(20)
                                     .overlay(
                                         Text(part[index])
@@ -260,8 +260,36 @@ struct TrendingView: View {
 
 
 struct ProfileView: View {
+    
+    let  content = [ GridItem(.fixed(50), spacing: nil, alignment: nil) ]
+    
     var body: some View {
-        Text("profile")
+        ScrollView {
+            VStack {
+                Rectangle()
+                    .fill(.white)
+                    .frame(height: 300)
+                    .overlay(
+                        HStack {
+                            Circle()
+                                .frame(width: 100, height: 100, alignment: .topLeading)
+                                .position(x: 60, y: 60)
+                            Text("username")
+                                .frame(alignment: .topLeading)
+                                .position(x: -50, y: 45)
+                        }.background(Color.blue)
+
+                    )
+                
+                LazyVGrid(columns: content) {
+                    ForEach(0..<10) {index in //variable named post inside loop
+                        RoundedRectangle(cornerRadius: 10) //
+                            .frame(width: 420, height: 200)
+                    }
+                }
+            }
+            .background(Color.cyan)
+        }
     }
 }
 
