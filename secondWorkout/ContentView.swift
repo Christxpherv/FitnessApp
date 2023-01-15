@@ -58,8 +58,6 @@ struct ImageGrid: View {
         GridItem(.flexible(), spacing: 0),
         GridItem(.flexible(), spacing: 0)  ]
     
-    var iterations: Int = 8
-    
     let image: [String] = ["orange", "black", "orange", "black",
                             "orange", "black", "orange", "black"]
     
@@ -67,19 +65,16 @@ struct ImageGrid: View {
                           "core", "back", "legs", "calves"]
     
     var body: some View {
-        ZStack {
-            NavigationView {
-                ZStack {
-                    
-                    Color.gray
-                        .ignoresSafeArea(edges: .top)
-                    
+        NavigationView {
+            ScrollView {
+                
+                Section(header: Text("exercises")) {
                     LazyVGrid(columns: columns) {
                         ForEach(0..<8, id: \.self) { index in
                             NavigationLink(destination: DetailView(selectedPart: part[index])) {
                                 Image(image[index])
                                     .resizable(capInsets: .init(), resizingMode: .stretch)
-                                    .frame(width: 185, height: 185)
+                                    .frame(width: 200, height: 200)
                                     .cornerRadius(20)
                                     .overlay(
                                         Text(part[index])
@@ -88,6 +83,25 @@ struct ImageGrid: View {
                             }
                         }
                     }
+                }
+                Section(header: Text("chat robot")) {
+                    Rectangle()
+                        .frame(width: 400, height: 500)
+                }
+            }
+            .navigationBarTitleDisplayMode(.large)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Image(uiImage: UIImage(named:"send")!)
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                }s
+                
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Circle()
+                        .position(x: -25, y: 20)
+                        .scaledToFit()
+                        .frame(width: 100, height: 40, alignment: .trailing)
                 }
             }
         }
