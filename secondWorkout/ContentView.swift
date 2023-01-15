@@ -95,7 +95,7 @@ struct ImageGrid: View {
                     Image(uiImage: UIImage(named:"send")!)
                         .resizable()
                         .frame(width: 30, height: 30)
-                }s
+                }
                 
                 ToolbarItem(placement: .navigationBarLeading) {
                     Circle()
