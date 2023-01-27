@@ -1,71 +1,81 @@
 import SwiftUI
 
 struct ProfileView: View {
+    
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Image("profile_picture")
-                    .resizable()
-                    .frame(width: 100, height: 100)
-                    .clipShape(Circle())
-                    .overlay(Circle().stroke(Color.white, lineWidth: 4))
-                    .shadow(radius: 5)
-                VStack(alignment: .leading) {
-                    Text("Username")
-                        .font(.title)
-                        .bold()
-                    HStack {
-                        Text("Followers")
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                        Spacer()
-                        Text("Following")
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
+        Section {
+            VStack(alignment: .leading) {
+                HStack {
+                    Spacer(minLength: 50)
+                    pfp
+                    Spacer(minLength: 170)
+                    editProfile
+                    Spacer(minLength: 50)
+                }
+                HStack {
+                    VStack {
+                        Text("Username")
+                            .font(.system(size: 25, weight: .bold, design: .rounded))
+                        
+                        Text("user")
+                            .font(.system(size: 20, weight: .semibold, design: .default))
+                        
                     }
                 }
+                .padding(.horizontal, 35.0)
+                .frame(width: .infinity, height: 50)
+                HStack {
+                    follows
+                }
+                .padding(.horizontal, 35)
+                .padding(.top, 20)
                 Spacer()
-                VStack(alignment: .trailing) {
-                    Button(action: {
-                        // action for follow button
-                    }) {
-                        Text("Follow")
-                            .font(.subheadline)
-                            .foregroundColor(.white)
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 12)
-                            .background(Color.blue)
-                            .clipShape(Capsule())
-                    }
-                    Button(action: {
-                        // action for message button
-                    }) {
-                        Image(systemName: "message")
-                            .font(.title)
-                            .foregroundColor(.blue)
-                    }
-                }
             }
-            .padding(.top, 16)
-            .padding(.horizontal, 16)
-            
-            Text("Bio")
-                .font(.body)
-                .padding(.top, 8)
-                .padding(.horizontal, 16)
-            
-            List {
-                // list of tweets or other content
-            }
-            .padding(.top, 8)
         }
-        .navigationBarTitle("Profile", displayMode: .inline)
+    }
+    var pfp: some View {
+        ZStack {
+            Image("orange")
+                .resizable()
+                .frame(width: 95, height: 110)
+                .clipShape(Circle())
+            
+            Circle()
+                .fill(Color.white.opacity(0.1))
+                .frame(width: 110, height: 135)
+        }
+    }
+    
+    @State var followers: Int = 1000
+    @State var following: Int = 0
+    
+    var follows: some View {
+        HStack {
+            Text(String(followers))
+                .font(.system(size: 20, weight: .semibold, design: .rounded))
+            Text("followers")
+                .font(.system(size: 20, weight: .semibold, design: .none))
+            
+            
+            Text(String(following))
+                .font(.system(size: 20, weight: .semibold, design: .rounded))
+            Text("following")
+                .font(.system(size: 20, weight: .semibold, design: .none))
+        }
+        .foregroundColor(Color.black)
+    }
+    var editProfile: some View {
+        Button(action: {
+            // code
+        }) {
+            RoundedRectangle(cornerRadius: 15)
+                .stroke(Color.black)
+                .frame(width: 95, height: 33)
+                .overlay(Text("Edit profile")
+                    .foregroundColor(Color.black))
+        }
     }
 }
-
-
-
-
 
 
 struct ProfileView_Previews: PreviewProvider {
