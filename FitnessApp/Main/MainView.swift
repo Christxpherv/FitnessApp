@@ -1,10 +1,10 @@
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
     
     @State private var currentTab = 0
     @State private var searchTerm: String = ""
-
+    
     var body: some View {
         TabView {
             HomePageView()
@@ -68,7 +68,7 @@ struct ContentView: View {
 
 
 
-struct ContentView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }

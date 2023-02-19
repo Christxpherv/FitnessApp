@@ -1,7 +1,9 @@
 import SwiftUI
 import FirebaseCore
 import FirebaseAuth
+import Firebase
 
+/*
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -10,10 +12,14 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     return true
   }
 }
+*/
 
 @main
-struct secondWorkoutApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+struct FitnessApp: App {
+    init() {
+        FirebaseApp.configure()
+    }
+    // @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
             NavigationView {
