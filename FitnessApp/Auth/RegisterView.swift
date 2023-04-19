@@ -11,6 +11,9 @@ struct RegisterView: View {
     @State var emailID: String = ""
     @State var password: String = ""
     @State var username: String = ""
+    @State var userProfilePicData: Data?
+    @State var showImagePicker: Bool = false
+    // @State var photoItem: PhotosImagePicker?
 
     @State var showError: Bool = false
     @State var errorMessage: String = ""
@@ -29,6 +32,18 @@ struct RegisterView: View {
                 .hAlign(.leading)
 
             VStack(spacing: 12) {
+                ZStack {
+                    if let userProfilePicData, let image = UIImage(data: userProfilePicData) {
+                        Image(uiImage: image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    }
+                    else {
+                        Image("NullProfile")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    }
+                }
                 TextField("Email", text: $emailID)
                     .textContentType(.emailAddress)
                     .border(1, .gray.opacity(0.5))
@@ -90,9 +105,11 @@ struct RegisterView: View {
         closeKeyboard()
         Task{
             do{
+                /* create firesebase account */
                 try await Auth.auth().createUser(withEmail: emailID, password: password)
-
+                /* upload user profile picture */
                 guard let userUID = Auth.auth().currentUser?.uid else{return}
+                guard let imageData = userProfilePicData else {return}
 
                 let user = User(username: username, userEmail: emailID, userUID: userUID)
 

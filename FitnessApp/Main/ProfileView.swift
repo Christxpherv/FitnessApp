@@ -1,82 +1,93 @@
 import SwiftUI
+import Firebase
+import FirebaseStorage
+import FirebaseFirestore
+import FirebaseAuth
 
 struct ProfileView: View {
     
+    @State private var myProfile: User?
+    @State var errorMessage: String = ""
+    @State var showError: Bool = false
+    @State var isLoading: Bool = false
+    
+    @AppStorage("log_status") var logStatus: Bool = false
+    
     var body: some View {
-        Section {
-            VStack(alignment: .leading) {
-                HStack {
-                    Spacer(minLength: 50)
-                    pfp
-                    Spacer(minLength: 170)
-                    editProfile
-                    Spacer(minLength: 50)
+        NavigationStack {
+            VStack {
+                if let myProfile {
+                    ProfileContent(user: myProfile)
+                        .refreshable {
+                            self.myProfile = nil
+                            await fetchUserData() }
+                } else {
+                    ProgressView()
                 }
-                HStack {
-                    VStack {
-                        Text("Username")
-                            .font(.system(size: 25, weight: .bold, design: .rounded))
+            }
+            .navigationTitle("Profile")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Menu {
+                        Button("logout", action: logOutUser)
                         
-                        Text("user")
-                            .font(.system(size: 20, weight: .semibold, design: .default))
+                        Button("delete account", role: .destructive, action: deleteAccount)
                         
+                    } label: {
+                        Image(systemName: "ellipsis")
+                            .rotationEffect(.init(degrees: 90))
+                            .tint(.black)
+                            .scaleEffect(0.8)
                     }
                 }
-                .padding(.horizontal, 35.0)
-                .frame(width: .infinity, height: 50)
-                HStack {
-                    follows
-                }
-                .padding(.horizontal, 35)
-                .padding(.top, 20)
-                Spacer()
+            }
+        }
+        .overlay {
+            LoadingView(show: $isLoading)
+        }
+        .alert(errorMessage, isPresented: $showError) {
+        }
+        .task {
+            if myProfile != nil{return}
+            await fetchUserData()
+        }
+    }
+    func fetchUserData()async {
+        guard let userUID = Auth.auth().currentUser?.uid else {return}
+        guard let user = try? await Firestore.firestore().collection("Users").document(userUID).getDocument(as: User.self) else {return}
+        await MainActor.run(body: {
+            myProfile = user
+        })
+    }
+    func logOutUser() {
+        try? Auth.auth().signOut()
+        logStatus = false
+    }
+    func deleteAccount() {
+        isLoading = true
+        Task {
+            do {
+                guard let userUID = Auth.auth().currentUser?.uid else {return}
+                // delete profile picture
+                let reference = Storage.storage().reference().child("Profile_Images").child(userUID)
+                try await reference.delete()
+                // delete user document
+                try await Firestore.firestore().collection("Users").document(userUID).delete()
+                try await Auth.auth().currentUser?.delete()
+                logStatus = false
+            } catch {
+                
             }
         }
     }
-    var pfp: some View {
-        ZStack {
-            Image("orange")
-                .resizable()
-                .frame(width: 95, height: 110)
-                .clipShape(Circle())
-            
-            Circle()
-                .fill(Color.white.opacity(0.1))
-                .frame(width: 110, height: 135)
-        }
-    }
-    
-    @State var followers: Int = 1000
-    @State var following: Int = 0
-    
-    var follows: some View {
-        HStack {
-            Text(String(followers))
-                .font(.system(size: 20, weight: .semibold, design: .rounded))
-            Text("followers")
-                .font(.system(size: 20, weight: .semibold, design: .none))
-            
-            
-            Text(String(following))
-                .font(.system(size: 20, weight: .semibold, design: .rounded))
-            Text("following")
-                .font(.system(size: 20, weight: .semibold, design: .none))
-        }
-        .foregroundColor(Color.black)
-    }
-    var editProfile: some View {
-        Button(action: {
-            // code
-        }) {
-            RoundedRectangle(cornerRadius: 15)
-                .stroke(Color.black)
-                .frame(width: 95, height: 33)
-                .overlay(Text("Edit profile")
-                    .foregroundColor(Color.black))
-        }
+    func setError(_ error: Error)async {
+        await MainActor.run(body: {
+            isLoading = false
+            errorMessage = error.localizedDescription
+            showError.toggle()
+        })
     }
 }
-
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {

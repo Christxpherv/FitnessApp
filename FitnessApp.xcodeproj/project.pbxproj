@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		DB28DA4829A2AE7F002E32B2 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB28DA4729A2AE7F002E32B2 /* RegisterView.swift */; };
 		DB28DA4D29A2B7BD002E32B2 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB28DA4C29A2B7BD002E32B2 /* Extension.swift */; };
+		DB28DA4F29A2DC87002E32B2 /* ProfileContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB28DA4E29A2DC87002E32B2 /* ProfileContent.swift */; };
+		DB28DA5229A3075C002E32B2 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = DB28DA5129A3075C002E32B2 /* SDWebImageSwiftUI */; };
 		DB52773A296CAE780082060C /* FitnessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB527739296CAE780082060C /* FitnessApp.swift */; };
 		DB52773C296CAE780082060C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB52773B296CAE780082060C /* ContentView.swift */; };
 		DB52773E296CAE790082060C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB52773D296CAE790082060C /* Assets.xcassets */; };
@@ -38,6 +40,7 @@
 		DB15C75429787B01009E6CBB /* FitnessApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FitnessApp.entitlements; sourceTree = "<group>"; };
 		DB28DA4729A2AE7F002E32B2 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		DB28DA4C29A2B7BD002E32B2 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		DB28DA4E29A2DC87002E32B2 /* ProfileContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContent.swift; sourceTree = "<group>"; };
 		DB527736296CAE780082060C /* FitnessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitnessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB527739296CAE780082060C /* FitnessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessApp.swift; sourceTree = "<group>"; };
 		DB52773B296CAE780082060C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,6 +68,7 @@
 				DBB5F90929784C7D0089AA1E /* FirebaseAuth in Frameworks */,
 				DBB14754297F0C2D0091E316 /* FirebaseDatabase in Frameworks */,
 				DBE9465929A19BD5008A00D8 /* FirebaseFirestoreSwift in Frameworks */,
+				DB28DA5229A3075C002E32B2 /* SDWebImageSwiftUI in Frameworks */,
 				DBB14756297F0C3A0091E316 /* FirebaseStorage in Frameworks */,
 				DBB78F6A297748A200C76363 /* FirebaseAnalytics in Frameworks */,
 				DBB14758297F0C4C0091E316 /* FirebaseFirestore in Frameworks */,
@@ -84,6 +88,7 @@
 				DBE02A4429760ACB0002A9E0 /* ForYouView.swift */,
 				DBE02A4629760AEB0002A9E0 /* TrendingView.swift */,
 				DBE02A4829760B380002A9E0 /* ProfileView.swift */,
+				DB28DA4E29A2DC87002E32B2 /* ProfileContent.swift */,
 				DBD0042A29764D9C007F13F1 /* SearchBar.swift */,
 			);
 			path = Main;
@@ -188,6 +193,7 @@
 				DBB14755297F0C3A0091E316 /* FirebaseStorage */,
 				DBB14757297F0C4C0091E316 /* FirebaseFirestore */,
 				DBE9465829A19BD5008A00D8 /* FirebaseFirestoreSwift */,
+				DB28DA5129A3075C002E32B2 /* SDWebImageSwiftUI */,
 			);
 			productName = secondWorkout;
 			productReference = DB527736296CAE780082060C /* FitnessApp.app */;
@@ -219,6 +225,7 @@
 			mainGroup = DB52772D296CAE780082060C;
 			packageReferences = (
 				DBB78F68297748A200C76363 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				DB28DA5029A3075C002E32B2 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = DB527737296CAE780082060C /* Products */;
 			projectDirPath = "";
@@ -247,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB28DA4F29A2DC87002E32B2 /* ProfileContent.swift in Sources */,
 				DBE9465B29A1CC89008A00D8 /* MainView.swift in Sources */,
 				DB52773C296CAE780082060C /* ContentView.swift in Sources */,
 				DB28DA4829A2AE7F002E32B2 /* RegisterView.swift in Sources */,
@@ -467,6 +475,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DB28DA5029A3075C002E32B2 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		DBB78F68297748A200C76363 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -478,6 +494,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DB28DA5129A3075C002E32B2 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DB28DA5029A3075C002E32B2 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
 		DBB14753297F0C2D0091E316 /* FirebaseDatabase */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DBB78F68297748A200C76363 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
