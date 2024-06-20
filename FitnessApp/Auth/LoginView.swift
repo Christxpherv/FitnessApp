@@ -23,6 +23,7 @@ struct LoginView: View {
     var body: some View {
         VStack(spacing: 10) {
             Text("Sign In")
+                .padding(10)
                 .font(.largeTitle.bold())
                 .hAlign(.leading)
             
